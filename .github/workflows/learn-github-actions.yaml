@@ -30,8 +30,8 @@ jobs:
           kubeconfig_file: ${{ env.KUBECONFIG_FILE }}
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
-			- name: Run Tests
-				shell: bash
+      - name: Run Tests
+        shell: bash
         run: |
           curl --header "x-telepresence-intercept-id: service-intercepted" -f "http://emojivoto.aglez.k736.net/api/vote?choice=:doughnut:"
       - name: Disconnect Telepresence
