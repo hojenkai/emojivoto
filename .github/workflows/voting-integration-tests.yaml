@@ -1,0 +1,38 @@
+name: Run Integration Test
+on:
+  push:
+    branches-ignore:
+    - 'main'
+jobs:
+  my-job:
+    name: Run Integration Test using Remote Cluster
+    runs-on: ubuntu-latest
+    env:
+      TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
+      KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
+    steps:
+      - name : Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.17'
+      - name: Run voting service
+        uses: ./.github/actions/run-voting-service/
+      - name: Connect to Cluster and Intercept remote service
+        uses: datawire/telepresence-actions@v0
+        with:
+          telepresence_api_key: ${{ env.TELEPRESENCE_API_KEY }}
+          service_name: voting
+          service_port: 8081:8080
+          kubeconfig_file: ${{ env.KUBECONFIG_FILE }}
+          namespace: emojivoto
+          http_header: "x-telepresence-intercept-id=service-intercepted"
+      - name: Run Tests
+        shell: bash
+        run: |
+          curl --header "x-telepresence-intercept-id: service-intercepted" -f "http://emojivoto.aglez.k736.net/api/vote?choice=:doughnut:"
+      - name: Disconnect Telepresence
+        uses: datawire/telepresence-actions/disconnect@v0
