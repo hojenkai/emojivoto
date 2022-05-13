@@ -29,11 +29,10 @@ jobs:
           service_port: 8081:8080
           kubeconfig_file: ${{ env.KUBECONFIG_FILE }}
           namespace: emojivoto
-          http_header: "x-telepresence-intercept-id=voting-service-intercepted"
-
+          http_header: "x-telepresence-intercept-id=service-intercepted"
       - name: Run Tests
         shell: bash
         run: |
-          curl --header "x-telepresence-intercept-id:voting-service-intercepted" -f "http://emojivoto.aglez.k736.net/api/vote?choice=:doughnut:"
+          curl --header "x-telepresence-intercept-id: service-intercepted" -f "http://emojivoto.aglez.k736.net/api/vote?choice=:doughnut:"
       - name: Disconnect Telepresence
         uses: datawire/telepresence-actions/disconnect@v0
