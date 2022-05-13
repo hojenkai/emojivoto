@@ -22,15 +22,14 @@ jobs:
       - name: Run voting service
         uses: ./.github/actions/run-voting-service/
       - name: Connect to Cluster and Intercept remote service
-        uses: datawire/telepresence-actions@v0.1
+        uses: datawire/telepresence-actions@v0
         with:
           telepresence_api_key: ${{ env.TELEPRESENCE_API_KEY }}
           service_name: voting
           service_port: 8081:8080
           kubeconfig_file: ${{ env.KUBECONFIG_FILE }}
           namespace: emojivoto
-          http_header: "x-telepresence-intercept-id=voting-service-intercepted"
-          version: 2.5.8
+          http_header: "x-telepresence-intercept-id=service-intercepted"
 
       - name: Run Tests
         shell: bash
