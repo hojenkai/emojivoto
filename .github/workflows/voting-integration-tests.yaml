@@ -22,7 +22,7 @@ jobs:
       - name: Run voting service
         uses: ./.github/actions/run-voting-service/
       - name: Connect to Cluster and Intercept remote service
-        uses: datawire/telepresence-actions@v0
+        uses: datawire/telepresence-actions@v0.1
         with:
           telepresence_api_key: ${{ env.TELEPRESENCE_API_KEY }}
           service_name: voting
