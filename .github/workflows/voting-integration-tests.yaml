@@ -29,7 +29,9 @@ jobs:
           service_port: 8081:8080
           kubeconfig_file: ${{ env.KUBECONFIG_FILE }}
           namespace: emojivoto
-          http_header: "x-telepresence-intercept-id=service-intercepted"
+          http_header: "x-telepresence-intercept-id=voting-service-intercepted"
+          version: 2.5.8
+
       - name: Run Tests
         shell: bash
         run: |
