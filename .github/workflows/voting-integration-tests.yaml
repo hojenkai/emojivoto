@@ -24,10 +24,11 @@ jobs:
         uses: ./.github/actions/run-voting-service/
 
       - name: Create kubeconfig file
-        run: 'echo $KUBEFILE > /opt/kubeconfig'
-        shell: bash
-        env:
-          KUBEFILE: ${{secrets.KUBECONFIG_FILE}}
+        run: |
+          |
+          cat <<EOF > /opt/kubeconfig
+          ${{ env.KUBECONFIG_FILE }}
+          EOF
 
       - name: Install Telepresence
         uses: datawire/telepresence-actions/install@v0.1
