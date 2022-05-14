@@ -25,7 +25,6 @@ jobs:
 
       - name: Create kubeconfig file
         run: |
-          |
           cat <<EOF > /opt/kubeconfig
           ${{ env.KUBECONFIG_FILE }}
           EOF
