@@ -18,7 +18,7 @@ jobs:
       - name: Make KUBECONFIG available
         run: |
           cat <<EOF > /opt/kubeconfig
-          ${{ secret.KUBECONFIG_FILE }}
+          ${{ env.KUBECONFIG_FILE }}
           EOF
           export KUBECONFIG=/opt/kubeconfig
           wc /opt/kubeconfig
