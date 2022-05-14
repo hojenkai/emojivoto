@@ -30,6 +30,8 @@ jobs:
         run: |
           echo $KUBECONFIG_FILE > /opt/kubeconfig
           export KUBECONFIG=/opt/kubeconfig
+          wc $KUBECONFIG
+          head -n 2 $KUBECONFIG
           echo "KUBECONFIG=/opt/kubeconfig" >> $GITHUB_ENV
       - name: Telepresence connect
         uses: datawire/telepresence-actions/connect@v0.1
