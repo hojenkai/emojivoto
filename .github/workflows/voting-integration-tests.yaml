@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Make KUBECONFIG available
         run: |
-          echo $KUBECONFIG_FILE > /opt/kubeconfig
+          echo '${{secrets.KUBECONFIG_FILE}}' > /opt/kubeconfig
           export KUBECONFIG=/opt/kubeconfig
           wc /opt/kubeconfig
           head -n 2 /opt/kubeconfig
