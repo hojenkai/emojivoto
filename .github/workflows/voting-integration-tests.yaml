@@ -27,9 +27,11 @@ jobs:
         with:
           version: 2.5.8
       - name: Make KUBECONFIG available
-        run:
-          echo '${{ secrets.KUBECONFIG_FILE }}' > /opt/kubeconfig
+        run: |
+          echo '$KUBECONFIG_FILE' > /opt/kubeconfig
           echo "KUBECONFIG=/opt/kubeconfig" >> $GITHUB_ENV
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
       - name: Telepresence connect
         uses: datawire/telepresence-actions/connect@v0.1
       - name: Login
