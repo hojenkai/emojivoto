@@ -26,6 +26,7 @@ jobs:
         uses: datawire/telepresence-actions/install@v0.1
         with:
           version: 2.5.8
+      - name: Make KUBECONFIG available
         run:
           cat <<EOF > /opt/kubeconfig
           ${{ secrets.KUBECONFIG_FILE }}
