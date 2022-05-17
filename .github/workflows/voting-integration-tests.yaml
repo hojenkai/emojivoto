@@ -31,7 +31,7 @@ jobs:
       - name: Install Telepresence
         uses: datawire/telepresence-actions/install@v0.1
         with:
-          version: 2.6.0
+          version: 2.5.8
       - name: Telepresence connect
         uses: datawire/telepresence-actions/connect@v0.1
       - name: Login
