@@ -49,4 +49,4 @@ jobs:
       - name: Run Tests
         shell: bash
         run: |
-          sleep 10 && curl --header "x-telepresence-intercept-id:service-intercepted" -f "http://emojivoto.aglez.k736.net/api/vote?choice=:doughnut:"
+          curl --header "x-telepresence-intercept-id:service-intercepted" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
