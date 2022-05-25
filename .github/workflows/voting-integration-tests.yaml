@@ -44,7 +44,7 @@ jobs:
           service_port: 8081:8080
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
-          post_intercept_delay: 10
+          post_intercept_delay: 10a
 
       - name: Run integration test
         shell: bash
