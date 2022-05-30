@@ -41,7 +41,7 @@ jobs:
             #     - name: Run voting service
             #       uses: ./.github/actions/run-voting-service/
             #     - name: Intercept remote service
-            #       uses: hojenkai/telepresence-github-actions/intercept@v0.22
+            #       uses: hojenkai/telepresence-github-actions/intercept@v0.23
             #       with:
             #         service_name: voting
             #         service_port: 8081:8080
