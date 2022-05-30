@@ -16,6 +16,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install Telepresence
+        uses: hojenkai/telepresence-github-actions/install@v0.27
+        with:
+          version: 2.5.8
+      - name: Login to Ambassador Cloud
+        uses: hojenkai/telepresence-github-actions/login@v0.27
+        with:
+          telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
+
       - name: Create kubeconfig file
         run: |
           cat <<EOF > /opt/kubeconfig
@@ -26,14 +35,6 @@ jobs:
         with:
           client_values_file: telepresence-client-values.yml
 
-      - name: Install Telepresence
-        uses: hojenkai/telepresence-github-actions/install@v0.27
-        with:
-          version: 2.5.8
-      - name: Login to Ambassador Cloud
-        uses: hojenkai/telepresence-github-actions/login@v0.27
-        with:
-          telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
             #     - name: Install Go
             #       uses: actions/setup-go@v3
             #       with:
