@@ -17,11 +17,11 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install Telepresence
-        uses: hojenkai/telepresence-github-actions/install@v0.28
+        uses: hojenkai/telepresence-github-actions/install@v0.29
         with:
           version: 2.5.8
       - name: Login to Ambassador Cloud
-        uses: hojenkai/telepresence-github-actions/login@v0.28
+        uses: hojenkai/telepresence-github-actions/login@v0.29
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
 
@@ -33,7 +33,7 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Connect to remote cluster
-        uses: hojenkai/telepresence-github-actions/connect@v0.28
+        uses: hojenkai/telepresence-github-actions/connect@v0.29
         with:
           client_values_file: telepresence-client-values.yml
 
@@ -44,7 +44,7 @@ jobs:
             #     - name: Run voting service
             #       uses: ./.github/actions/run-voting-service/
             #     - name: Intercept remote service
-            #       uses: hojenkai/telepresence-github-actions/intercept@v0.28
+            #       uses: hojenkai/telepresence-github-actions/intercept@v0.29
             #       with:
             #         service_name: voting
             #         service_port: 8081:8080
