@@ -24,8 +24,8 @@ jobs:
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.23
         with:
-          client_values_file: ./telepresence-client-values.yml
-          
+          client_values_file: ${{github.workspace}}/telepresence-client-values.yml
+
       - name: Install Telepresence
         uses: hojenkai/telepresence-github-actions/install@v0.23
         with:
