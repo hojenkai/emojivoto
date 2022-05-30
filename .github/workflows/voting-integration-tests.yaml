@@ -38,7 +38,7 @@ jobs:
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.22
         with:
-          client_values_file: telepresence-client-values.yml
+          client_values_file: ../../telepresence-client-values.yml
       - name: Intercept remote service
         uses: hojenkai/telepresence-github-actions/intercept@v0.22
         with:
