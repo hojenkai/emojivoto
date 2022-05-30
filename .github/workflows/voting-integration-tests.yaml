@@ -22,7 +22,7 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Connect to remote cluster
-        uses: hojenkai/telepresence-github-actions/connect@v0.22
+        uses: hojenkai/telepresence-github-actions/connect@v0.23
         with:
           client_values_file: ./telepresence-client-values.yml
           
