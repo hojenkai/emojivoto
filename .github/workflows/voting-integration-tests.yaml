@@ -27,6 +27,8 @@ jobs:
 
       - name: Create kubeconfig file
         run: |
+          echo $HOME
+          echo $XDG_CONFIG_DIRS
           cat <<EOF > /opt/kubeconfig
           ${{ env.KUBECONFIG_FILE }}
           EOF
