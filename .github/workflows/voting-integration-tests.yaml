@@ -22,16 +22,16 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Connect to remote cluster
-        uses: hojenkai/telepresence-github-actions/connect@v0.24
+        uses: hojenkai/telepresence-github-actions/connect@v0.25
         with:
           client_values_file: telepresence-client-values.yml
 
       - name: Install Telepresence
-        uses: hojenkai/telepresence-github-actions/install@v0.24
+        uses: hojenkai/telepresence-github-actions/install@v0.25
         with:
           version: 2.5.8
       - name: Login to Ambassador Cloud
-        uses: hojenkai/telepresence-github-actions/login@v0.24
+        uses: hojenkai/telepresence-github-actions/login@v0.25
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
             #     - name: Install Go
@@ -41,7 +41,7 @@ jobs:
             #     - name: Run voting service
             #       uses: ./.github/actions/run-voting-service/
             #     - name: Intercept remote service
-            #       uses: hojenkai/telepresence-github-actions/intercept@v0.24
+            #       uses: hojenkai/telepresence-github-actions/intercept@v0.25
             #       with:
             #         service_name: voting
             #         service_port: 8081:8080
