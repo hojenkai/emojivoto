@@ -32,8 +32,8 @@ jobs:
           EOF
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.29
-        with:
-          client_values_file: telepresence-client-values.yml
+          # with:
+          # client_values_file: telepresence-client-values.yml
 
       - name: Install Go
         uses: actions/setup-go@v3
