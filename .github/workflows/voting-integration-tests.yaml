@@ -16,10 +16,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Install Telepresence
-        uses: hojenkai/telepresence-github-actions/install@v0.30
-        with:
-          version: 2.5.8
       - name: Install Go
         uses: actions/setup-go@v3
         with:
@@ -32,11 +28,12 @@ jobs:
           cat <<EOF > /opt/kubeconfig
           ${{ env.KUBECONFIG_FILE }}
           EOF
+      - name: Install Telepresence
+        uses: hojenkai/telepresence-github-actions/install@v0.30
+        with:
+          version: 2.5.8
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.30
-          # with:
-          # client_values_file: telepresence-client-values.yml
-
       - name: Login to Ambassador Cloud
         uses: hojenkai/telepresence-github-actions/login@v0.30
         with:
@@ -48,8 +45,7 @@ jobs:
           service_port: 8081:8080
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
-          print_logs: true
-      
+
       - name: Run integration test
         shell: bash
         run: |
