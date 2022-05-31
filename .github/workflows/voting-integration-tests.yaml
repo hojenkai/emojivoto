@@ -47,6 +47,7 @@ jobs:
           service_port: 8081:8080
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
+          print_logs: true
 
       - name: Run integration test
         shell: bash
