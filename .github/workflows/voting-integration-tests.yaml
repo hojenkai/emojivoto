@@ -25,6 +25,7 @@ jobs:
 
       - name: Create kubeconfig file
         run: |
+          ls -al ~/.config/telepresence/
           cat <<EOF > /opt/kubeconfig
           ${{ env.KUBECONFIG_FILE }}
           EOF
