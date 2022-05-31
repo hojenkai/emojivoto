@@ -39,7 +39,8 @@ jobs:
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
       - name: Intercept remote service
-        uses: datawire/telepresence-actions@v0.3
+        uses: datawire/telepresence-actions/intercept@v0.3
+
         with:
           service_name: voting
           service_port: 8081:8080
