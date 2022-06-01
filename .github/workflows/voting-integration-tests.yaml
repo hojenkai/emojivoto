@@ -29,17 +29,17 @@ jobs:
           ${{ secrets.KUBECONFIG_FILE }}
           EOF
       - name: Install Telepresence
-        uses: datawire/telepresence-actions/install@v0.4
+        uses: hojenkai/telepresence-github-actions/install@v0.42
         with:
           version: 2.5.8
       - name: Connect to remote cluster
-        uses: datawire/telepresence-actions/connect@v0.4
+        uses: hojenkai/telepresence-github-actions/connect@v0.42
       - name: Login to Ambassador Cloud
-        uses: datawire/telepresence-actions/login@v0.4
+        uses: hojenkai/telepresence-github-actions/login@v0.42
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
       - name: Intercept remote service
-        uses: datawire/telepresence-actions/intercept@v0.4
+        uses: hojenkai/telepresence-github-actions/intercept@v0.42
         with:
           service_name: voting
           service_port: 8081:8080
