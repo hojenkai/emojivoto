@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
-      KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
+        # KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
       KUBECONFIG: /opt/kubeconfig
     steps:
       - name : Checkout
@@ -26,7 +26,7 @@ jobs:
       - name: Create kubeconfig file
         run: |
           cat <<EOF > /opt/kubeconfig
-          ${{ env.KUBECONFIG_FILE }}
+          ${{ secrets.KUBECONFIG_FILE }}
           EOF
       - name: Install Telepresence
         uses: hojenkai/telepresence-github-actions/install@v0.40
