@@ -35,7 +35,7 @@ jobs:
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.43
         with:
-          client_config_values: telepresence-client-values.yml
+          client_values_file: telepresence-client-values.yml
       - name: Login to Ambassador Cloud
         uses: hojenkai/telepresence-github-actions/login@v0.43
         with:
