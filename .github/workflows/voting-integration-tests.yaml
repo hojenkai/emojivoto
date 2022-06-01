@@ -34,8 +34,6 @@ jobs:
           version: 2.5.8
       - name: Connect to remote cluster
         uses: datawire/telepresence-actions/connect@v0.4
-        with:
-          client_values_file: telepresence-client-values.yml
       - name: Login to Ambassador Cloud
         uses: datawire/telepresence-actions/login@v0.4
         with:
