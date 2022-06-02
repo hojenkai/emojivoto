@@ -17,6 +17,7 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Congifuring Telepresence
-        uses: datawire/telepresence-actions/configure@v0.4
+        uses: hojenkai/telepresence-github-actions/configure@v0.49
         with:
           version: 2.5.8
+          telepresence_config_file: telepresence-config-values.yml

@@ -1,0 +1,3 @@
+timeouts:
+  agentInstall: 5m
+  intercept: 30s
