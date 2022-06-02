@@ -41,7 +41,7 @@ jobs:
       - name: Intercept remote service
         uses: hojenkai/telepresence-github-actions/intercept@v0.48
         with:
-          service_name: web
+          service_name: voting
           service_port: 8081:8080
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
