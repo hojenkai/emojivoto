@@ -17,6 +17,4 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Congifuring Telepresence
-        uses: hojenkai/telepresence-github-actions/configure@v0.49
-        with:
-          telepresence_config_file: telepresence-config-values.yml
+        uses: hojenkai/telepresence-github-actions/configure@v0.51
