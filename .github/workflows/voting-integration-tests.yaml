@@ -30,8 +30,6 @@ jobs:
           EOF
       - name: Install Telepresence
         uses: hojenkai/telepresence-github-actions/install@v0.48
-        with:
-          version: 2.5.8
       - name: Connect to remote cluster
         uses: hojenkai/telepresence-github-actions/connect@v0.48
         with:
