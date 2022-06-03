@@ -17,4 +17,4 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Configure Telepresence
-        uses: arturogonzalez58/telepresence-actions/configure@v0.6
+        uses: arturogonzalez58/telepresence-actions/configure@v0.7

@@ -28,19 +28,19 @@ jobs:
           ${{ secrets.KUBECONFIG_FILE }}
           EOF
       - name: Install Telepresence
-        uses: arturogonzalez58/telepresence-actions/install@v0.6
+        uses: arturogonzalez58/telepresence-actions/install@v0.7
         with:
           version: 2.5.8
       - name: Login to Ambassador Cloud
-        uses: arturogonzalez58/telepresence-actions/login@v0.6
+        uses: arturogonzalez58/telepresence-actions/login@v0.7
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
       - name: Connect to remote cluster
-        uses: arturogonzalez58/telepresence-actions/connect@v0.6
+        uses: arturogonzalez58/telepresence-actions/connect@v0.7
         with:
           telepresence_config_file: telepresence-client-values.yml
       - name: Intercept remote service
-        uses: arturogonzalez58/telepresence-actions/intercept@v0.6
+        uses: arturogonzalez58/telepresence-actions/intercept@v0.7
         with:
           service_name: voting
           service_port: 8081:8080
