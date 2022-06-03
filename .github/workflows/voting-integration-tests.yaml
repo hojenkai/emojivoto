@@ -20,8 +20,8 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.17'
-      - name: Run voting service
-        uses: ./.github/actions/run-voting-service/
+            # - name: Run voting service
+            # uses: ./.github/actions/run-voting-service/
 
       - name: Create kubeconfig file
         run: |
@@ -52,7 +52,7 @@ jobs:
         run: |
           cat /home/runner/.config/telepresence/config.yml
 
-      - name: Run integration test
-        shell: bash
-        run: |
-          curl --header "x-telepresence-intercept-id:service-intercepted" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
+          # - name: Run integration test
+          # shell: bash
+          # run: |
+          # curl --header "x-telepresence-intercept-id:service-intercepted" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
