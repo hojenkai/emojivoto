@@ -46,6 +46,9 @@ jobs:
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
           print_logs: true
+      - name: inspect config file
+        run: |
+          cat /home/runner/.config/telepresence/config.yml
 
       - name: Run integration test
         shell: bash
