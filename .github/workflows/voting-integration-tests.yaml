@@ -24,7 +24,6 @@ jobs:
 
       - name: Create kubeconfig file
         run: |
-          mkdir ~/.config
           cat <<EOF > ~/.config/kubeconfig
           ${{ secrets.KUBECONFIG_FILE }}
           EOF
