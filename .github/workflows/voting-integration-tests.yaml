@@ -9,8 +9,7 @@ jobs:
     runs-on: macos-latest
     env:
       TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
-        # KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
-      KUBECONFIG: /opt/kubeconfig
+      KUBECONFIG: ~/.config/kubeconfig
     steps:
       - name : Checkout
         uses: actions/checkout@v3
@@ -25,7 +24,8 @@ jobs:
 
       - name: Create kubeconfig file
         run: |
-          cat <<EOF > /opt/kubeconfig
+          mkdir ~/.config
+          cat <<EOF > ~/.config/kubeconfig
           ${{ secrets.KUBECONFIG_FILE }}
           EOF
       - name: Install Telepresence
