@@ -30,6 +30,8 @@ jobs:
           EOF
       - name: Install Telepresence
         uses: datawire/telepresence-actions/install@v0.5b
+        with:
+          version: 2.5.8
       - name: Login to Ambassador Cloud
         uses: datawire/telepresence-actions/login@v0.5b
         with:
