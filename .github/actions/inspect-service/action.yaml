@@ -1,0 +1,5 @@
+name: 'Test inspect'
+description: 'Test inspect'
+runs:
+  using: 'node16'
+  main: 'index.js'
