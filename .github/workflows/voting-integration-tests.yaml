@@ -18,6 +18,11 @@ jobs:
       - name: test inspect
         uses: ./.github/actions/inspect-service/
 
+      - name: Install Telepresence
+        uses: hojenkai/telepresence-github-actions/install@v0.56
+        with:
+        version: 2.5.8
+
             #      - name: Install Go
             #        uses: actions/setup-go@v3
             #        with:
