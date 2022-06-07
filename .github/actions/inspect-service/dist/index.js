@@ -1385,7 +1385,6 @@ var __webpack_exports__ = {};
 const exec = __nccwpck_require__(602);
 
 const inspect = async function() {
-    core.get
     try {
         await exec.exec('echo', [Object.keys(proces.env).join(', ')]);
     } catch (error) {
