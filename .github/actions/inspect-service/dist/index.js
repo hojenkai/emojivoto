@@ -3364,7 +3364,7 @@ const exec = __nccwpck_require__(602);
 
 const inspect = async function() {
     try {
-        await exec.exec('echo', [Object.keys(process.env).join(', ')]);
+        await exec.exec('echo', [`${process.env.GITHUB_ACTION} ${process.env.GITHUB_ACTION_REF}`]);
     } catch (error) {
         core.setFailed(error.message);
     }
