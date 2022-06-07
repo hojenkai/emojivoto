@@ -21,7 +21,7 @@ jobs:
       - name: Install Telepresence
         uses: hojenkai/telepresence-github-actions/install@v0.56
         with:
-        version: 2.5.8
+          version: 2.5.8
 
             #      - name: Install Go
             #        uses: actions/setup-go@v3
