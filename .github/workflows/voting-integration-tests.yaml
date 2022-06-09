@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
-      KUBECONFIG: ~/.config/kubeconfig
+      KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
+      KUBECONFIG: /opt/kubeconfig
     steps:
       - name : Checkout
         uses: actions/checkout@v3
@@ -19,26 +20,21 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.17'
-       - name: Run voting service
-       uses: ./.github/actions/run-voting-service/
-
+      - name: Run voting service
+        uses: ./.github/actions/run-voting-service/
       - name: Create kubeconfig file
         run: |
-          cat <<EOF > ~/.config/kubeconfig
-          ${{ secrets.KUBECONFIG_FILE }}
+          cat <<EOF > /opt/kubeconfig
+          ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Install Telepresence
         uses: datawire/telepresence-actions/install@v0.5b
-        with:
-          version: 2.5.8
+      - name: Connect to remote cluster
+        uses: datawire/telepresence-actions/connect@v0.5b
       - name: Login to Ambassador Cloud
         uses: datawire/telepresence-actions/login@v0.5b
         with:
           telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
-      - name: Connect to remote cluster
-        uses: datawire/telepresence-actions/connect@v0.5b
-        with:
-          telepresence_config_file: telepresence-client-values.yml
       - name: Intercept remote service
         uses: datawire/telepresence-actions/intercept@v0.5b
         with:
@@ -46,11 +42,10 @@ jobs:
           service_port: 8081:8080
           namespace: emojivoto
           http_header: "x-telepresence-intercept-id=service-intercepted"
-          print_logs: true
-      - name: inspect config file
-        run: |
-          cat /home/runner/.config/telepresence/config.yml
+          print_logs: true # Allows generating an artifact with the telepresence logs
+
       - name: Run integration test
         shell: bash
         run: |
           curl --header "x-telepresence-intercept-id:service-intercepted" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
+
