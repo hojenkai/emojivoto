@@ -8,7 +8,6 @@ jobs:
     name: Run Integration Test using Remote Cluster
     runs-on: ubuntu-latest
     env:
-      TELEPRESENCE_API_KEY: ${{ secrets.TELEPRESENCE_API_KEY }}
       KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
       KUBECONFIG: /opt/kubeconfig
     steps:
