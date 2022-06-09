@@ -17,4 +17,4 @@ jobs:
           ${{ env.KUBECONFIG_FILE }}
           EOF
       - name: Configure Telepresence
-        uses: datawire/telepresence-actions/configure@v0.5b
+        uses: datawire/telepresence-actions/configure@v1.0.0
