@@ -11,7 +11,7 @@ jobs:
       TELEPRESENCE_API_KEY: ${{ secrets.KUBECONFIG_FILE }}
       KUBECONFIG_FILE: ${{ secrets.KUBECONFIG_FILE }}
       KUBECONFIG: /opt/kubeconfig
-      GITHUB_COMMIT: echo '${{github.sha}}'|awk '{print substr($1,1,4)}'
+      GITHUB_COMMIT: ${echo '${{github.sha}}'|awk '{print substr($1,1,4)}'}
     steps:
       - name : Checkout
         uses: actions/checkout@v3
