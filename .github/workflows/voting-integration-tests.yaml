@@ -42,11 +42,11 @@ jobs:
           service_name: voting
           service_port: 8081:8080
           namespace: emojivoto
-          http_header: "x-telepresence-intercept-id=${{env.GITHUB_COMMIT}}"
+          http_header: "x-telepresence-intercept-id=${{github.sha}}"
           print_logs: true # Allows generating an artifact with the telepresence logs
 
       - name: Run integration test
         shell: bash
         run: |
-          curl --header "x-telepresence-intercept-id:${{env.GITHUB_COMMIT}}" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
+          curl --header "x-telepresence-intercept-id:${{github.sha}}" -f "http://web-svc.emojivoto:8080/api/vote?choice=:doughnut:"
 
