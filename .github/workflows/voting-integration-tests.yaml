@@ -32,7 +32,7 @@ jobs:
       - name: Login to Ambassador Cloud
         uses: datawire/telepresence-actions/login@v1.0.0
         with:
-          telepresence_api_key: ${{ secrets.TELEPRESENCE_API_KEY }}
+          telepresence_api_key: '${{secrets.TELEPRESENCE_API_KEY}}'
       - name: Connect to remote cluster
         uses: datawire/telepresence-actions/connect@v1.0.0
       - name: Intercept remote service
@@ -41,7 +41,7 @@ jobs:
           service_name: voting
           service_port: 8081:8080
           namespace: emojivoto
-          http_header: "x-telepresence-intercept-id=${{github.sha}}"
+          http_header: 'x-telepresence-intercept-id=${{github.sha}}'
           print_logs: true # Allows generating an artifact with the telepresence logs
 
       - name: Run integration test
