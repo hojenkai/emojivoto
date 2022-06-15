@@ -29,6 +29,8 @@ jobs:
           EOF
       - name: Install Telepresence
         uses: hojenkai/telepresence-github-actions/install@v0.61
+        with:
+          version: 2.5.8
       - name: Login to Ambassador Cloud
         uses: hojenkai/telepresence-github-actions/login@v0.61
         with:
